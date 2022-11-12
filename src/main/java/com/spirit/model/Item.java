@@ -1,5 +1,7 @@
 package com.spirit.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -7,11 +9,17 @@ import java.util.List;
 @Table(name = "items")
 public class Item {
 
+    @ApiModelProperty(notes = "Item id", example = "1", required = true)
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
+    @ApiModelProperty(notes = "Item name", example = "apple")
     private String name;
+
+    @ApiModelProperty(notes = "Item price", example = "100")
     private int price;
+
     @ManyToMany(mappedBy = "items")
     private List<Order> orders;
 

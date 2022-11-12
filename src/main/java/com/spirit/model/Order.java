@@ -1,5 +1,7 @@
 package com.spirit.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -8,10 +10,15 @@ import java.util.List;
 @Table(name = "orders")
 public class Order {
 
+    @ApiModelProperty(notes = "Order id", example = "1", required = true)
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
+
+    @ApiModelProperty(notes = "Order creation date and time", example = "2022-11-12T08:42:42.980Z")
     private LocalDateTime creationDateTime;
+
+    @ApiModelProperty(notes = "List of items in the order")
     @ManyToMany
     @JoinTable(
             name="order_item",
